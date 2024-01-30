@@ -1,18 +1,35 @@
-<form>
-    
-<div class="card flex justify-content-center">
-    <p-card header="Ingresar al sistema" [style]="{width: '300px'}">
+<form [formGroup]="loginForm">
+    <p-card header="Ingresar al sistema" [style]="{ width: '360px'}">
         <div class="field">
-            <label for="email">Correo electronico</label>
-            <input type="text" 
-            type="text"
-            pInputText
-            formControlName="email"
-            class="w-full"
-            name="email"
-            placeholder="Ingresa email"
-            />
+            <label form="email">Correo Electronico</label>
+            <input
+             type="text"
+             pInputText
+             formControlName="email"
+             class="w-full"
+             name="email"
+             placeholder="Teclea tu Correo Electronico"
+             />
         </div>
+
+        <div class="field">
+            <label form="password">Contraseña</label>
+            <input
+             type="text"
+             pInputText
+             formControlName="password"
+             class="w-full"
+             name="password"
+             placeholder="Teclea tu Contraseña"
+             />
+        </div>
+        <p-button label="Submit" styleClass="w-full"></p-button>
+        <div class="mt-2">
+            ¿Ya te registraste? <a routerLink="/register" >Registrate</a>
+        </div>
+
+
+
+
     </p-card>
-</div>
 </form>
