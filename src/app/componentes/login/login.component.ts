@@ -9,10 +9,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent {
   loginForma= this.fb.group({
     email: ['',[Validators.required, Validators.email]],
-    password: ['',[Validators.required,]],
+    password: ['',[Validators.required, Validators.minLength(8),
+      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)
+    ]],
 
   }
   );
+confirmPassword: any;
+registerForma: any;
 
   constructor(private fb: FormBuilder) {
 

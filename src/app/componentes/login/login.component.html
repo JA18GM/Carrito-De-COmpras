@@ -1,6 +1,18 @@
 <form [formGroup]="loginForma">
     <p-card header="Ingresar al sistema" [style]="{ width: '360px'}">
         <div class="field">
+            <label for="fullName">Nombre completo</label>
+            <input
+            type="text"
+            pInputText
+            formControlName="fullName"
+            class="w-full"
+            name="fullName"
+            placeholder="Nombre completo"
+            />
+        </div>
+
+        <div class="field">
             <label form="email">Correo Electronico</label>
             <input
              type="text"
@@ -16,14 +28,10 @@
             <div *ngIf="email.errors?.['requerid']">Email requerido</div>
             <div *ngIf="email.errors?.['email']">Debe ser valido</div>
         </small>
-        <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
-            <div *ngIf="password.errors?.['requerid']">Email requerido</div>
-            <div *ngIf="password.errors?.['email']">Debe ser valido</div>
-        </small>
         <div class="field">
             <label form="password">Contraseña</label>
             <input
-             type="text"
+             type="password"
              pInputText
              formControlName="password"
              class="w-full"
@@ -31,14 +39,14 @@
              placeholder="Teclea tu Contraseña"
              />
         </div>
+        
 
-        <p-button label="Ingresar" styleClass="w-full"></p-button>
+        
+        <p-button label="Ingresar" styleClass="w-full" [disabled]="loginForma.invalid"></p-button>
         <div class="mt-2">
             ¿Ya te registraste? <a routerLink="/register" >Registrate</a>
         </div>
-
-
-
+        
 
     </p-card>
 </form>
