@@ -1,13 +1,84 @@
 <form [formGroup]="registerForma">
     <p-card header="Registro" [style]="{width: '360px'}">
-        <p class="field">
-            <input type="text" 
-            pInputText 
-            formControlName="name"
-            name="name"
-            class="w-full"
-            placeholder="Ingrese su nombre completo"
-            />
-        </p>
+        
+        <div class="field">
+            <label form="fullname">Nombre completo</label>
+            <input
+             type="text"
+             pInputText
+             formControlName="fullname"
+             class="w-full"
+             name="fullname"
+             placeholder="Ingrese su nombre"
+             />
+        </div>
+
+        <small *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="block p-error">
+            <div *ngIf="fullname.errors?.['required']">Email requerido</div>
+            <div *ngIf="fullname.errors?.['email']">Debe ser valido</div>
+        </small>
+
+        <div>Correo Electronico        
+            <p class="field">
+                <input  
+                type="text"
+                pInputText
+                formControlName="email"
+                class="w-full"
+                name="email"
+                placeholder="Ingrese su correo"
+                />
+            </p>
+
+            <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">
+                <div *ngIf="email.errors?.['required']">Email requerido</div>
+                <div *ngIf="email.errors?.['email']">Debe ser valido</div>
+            </small>
+
+        </div>
+
+        <div>Contraseña        
+            <p class="field">
+                <input 
+                type="password"
+                pInputText
+                formControlName="password"
+                class="w-full"
+                name="password"
+                placeholder="Ingrese una contraseña"
+                />
+            </p>
+
+            <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
+            <div *ngIf="password.errors?.['required']">Contraseña requerida</div>
+            <div *ngIf="password.errors?.['minlegth']">Debe ser valido</div>
+            <div *ngIf="password.errors?.['pattern']">Debe contener una minuscula, una mayuscula, un caracter especial y un minimos de 8 caracteres</div>
+            </small>
+        </div>
+
+        <div>Confirmar contraseña        
+            <p class="field">
+                <input 
+                type="password"
+                pInputText
+                formControlName="confirmpassword"
+                class="w-full"
+                name="confirmpassword"
+                placeholder="Ingrese una contraseña"
+                />
+            </p>
+
+            <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
+            <div *ngIf="password.errors?.['required']">Contraseña requerida</div>
+            <div *ngIf="password.errors?.['minlegth']">Debe ser valido</div>
+            <div *ngIf="password.errors?.['pattern']">Debe contener una minuscula, una mayuscula, un caracter especial y un minimos de 8 caracteres</div>
+            </small>
+        </div>
+
+        <p-button label="Registrar" styleClass="w-full" [disabled]="registerForma.invalid"></p-button>
+        <div class="mt-2">
+            ¿Ya eres miembro? <a routerLink="/login" >Ingresar</a>
+        </div>
+        
     </p-card>
 </form>

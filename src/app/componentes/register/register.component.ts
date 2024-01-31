@@ -8,12 +8,37 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent {
 
-
   registerForma= this.fb.group({
-    "name": ['',[Validators.required]]
-  });
+    fullname: ['', [Validators.required]],
+    email: ['',[Validators.required, Validators.email]],
+    password: ['',[Validators.required, Validators.minLength(8),
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+    ]],
+    confirmpassword: ['',[Validators.required, Validators.minLength(8),
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+    ]],
+  
 
-  constructor(private fb:FormBuilder){
-    
+  }
+  );
+confirmpassword: any;
+
+
+  constructor(private fb: FormBuilder) {
+
+  }
+
+  get fullname() {
+    return this.registerForma.controls['fullname'];
+  }
+  get email(){
+    return this.registerForma.controls['email'];
+  }
+
+  get password(){
+    return this.registerForma.controls['password'];
+  }
+  get confirmPassword(){
+    return this.registerForma.controls['confirmpassword'];
   }
 }
