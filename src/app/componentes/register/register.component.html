@@ -1,4 +1,4 @@
-<form [formGroup]="registerForma">
+<form [formGroup]="registerForma" (ngSubmit)="enviarRegistro()">
     <p-card header="Registro" [style]="{width: '360px'}">
         
         <div class="field">
@@ -75,7 +75,7 @@
             </small>
         </div>
 
-        <p-button label="Registrar" styleClass="w-full" [disabled]="registerForma.invalid"></p-button>
+        <p-button label="Registrar" styleClass="w-full" [disabled]="registerForma.invalid" type="submit"></p-button>
         <div class="mt-2">
             ¿Ya eres miembro? <a routerLink="/login" >Ingresar</a>
         </div>

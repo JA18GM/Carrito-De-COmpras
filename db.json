@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "fullname": "Andrew",
+      "email": "jesusandrew108@gmail.com",
+      "password": "Notontos1@",
+      "id": "a41a"
+    },
+    {
+      "id": "7e6d",
+      "fullname": "El Gallo",
+      "email": "gallomanda@gmail.com",
+      "password": "Gallito@1"
+    },
+    {
+      "id": "06b5",
+      "fullname": "Gallo",
+      "email": "galoo@gmail.com",
+      "password": "Gallo@12"
+    },
+    {
+      "id": "63d8",
+      "fullname": "Gallo",
+      "email": "galoo@gmail.com",
+      "password": "Gallo@12"
+    }
+  ]
+}

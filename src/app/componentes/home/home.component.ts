@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  sesionIniciada: boolean = false;
+
+  logout() {
+      
+      this.sesionIniciada = false;
+      console.log('Sesión cerrada');
+}
 
 }

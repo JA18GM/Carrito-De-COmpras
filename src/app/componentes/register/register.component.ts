@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-register',
@@ -22,9 +26,11 @@ export class RegisterComponent {
   }
   );
 confirmpassword: any;
+  messageService: any;
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private auth:AuthService,
+    private router:Router, private mensaje: MessageService) {
 
   }
 
@@ -40,5 +46,22 @@ confirmpassword: any;
   }
   get confirmPassword(){
     return this.registerForma.controls['confirmpassword'];
+  }
+
+  enviarRegistro(){
+    const data = {...this.registerForma.value}
+
+    delete data.confirmpassword
+
+    this.auth.registerUser(data as User).subscribe(
+      response => {console.log(response)
+      this.messageService.add({ 
+      severity: 'success', 
+      summary: 'Registro exitoso', 
+      detail: 'Se ah registrado correctamente el usuario'});
+      this.router.navigate(['login'])
+      },
+        error => console.log(error)
+    )
   }
 }
